@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>إينس و معتز — دعوة زفاف</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌹</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine-950:#2b0d13;
+    --wine-900:#3c1119;
+    --wine-800:#521823;
+    --wine-700:#6a212e;
+    --gold-300:#e9d6a3;
+    --gold-400:#cda158;
+    --gold-500:#b3854a;
+    --cream-050:#f8f2e7;
+    --cream-100:#efe6d3;
+    --marble-ink:#3a3532;
+    --ink-on-cream:#3a1c22;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:env(safe-area-inset-top,0px);
+    scroll-snap-type:y proximity;
+    height:100%;
+  }
+  body{
+    margin:0;
+    height:100%;
+    background:var(--wine-950);
+    color:var(--cream-050);
+    font-family:'Amiri', serif;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--gold-400); color:var(--wine-950); }
+
+  section{
+    position:relative;
+    min-height:100vh;
+    width:100%;
+    scroll-snap-align:start;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:6vh 6vw;
+    overflow:hidden;
+  }
+
+  .ltr-name{ direction:ltr; unicode-bidi:isolate; font-family:'Cormorant Garamond',serif; }
+
+  /* ---------- dot nav ---------- */
+  .dotnav{
+    position:fixed;
+    top:50%;
+    right:18px;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    z-index:50;
+    opacity:0;
+    transition:opacity .6s ease;
+    pointer-events:none;
+  }
+  .dotnav.show{ opacity:1; pointer-events:auto; }
+  .dotnav a{
+    width:9px;height:9px;border-radius:50%;
+    background:rgba(233,214,163,.35);
+    border:1px solid rgba(233,214,163,.6);
+    display:block;
+    transition:background .3s, transform .3s;
+  }
+  .dotnav a.active{ background:var(--gold-300); transform:scale(1.3); }
+
+  /* =========================================================
+     SECTION 0 — COVER / WAX SEAL
+  ==========================================================*/
+  #cover{
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.05), transparent 60%),
+      var(--wine-900);
+  }
+  #cover svg.fabric{
+    position:absolute; inset:0; width:100%; height:100%;
+  }
+  .fold-caption{
+    position:relative;
+    margin-top:34px;
+    font-family:'Aref Ruqaa', serif;
+    color:var(--gold-300);
+    font-size:clamp(.95rem,2.4vw,1.2rem);
+    letter-spacing:.05em;
+    opacity:.9;
+    text-align:center;
+  }
+  .fold-caption span{
+    display:block;
+    font-family:'Amiri', serif;
+    font-size:.7rem;
+    color:rgba(233,214,163,.65);
+    margin-top:6px;
+  }
+  .seal-wrap{
+    position:relative;
+    width:min(38vw,190px);
+    height:min(38vw,190px);
+    cursor:pointer;
+    filter:drop-shadow(0 14px 22px rgba(0,0,0,.55));
+    transition:transform .35s ease;
+  }
+  .seal-wrap:hover{ transform:translateY(-3px) rotate(-1deg); }
+  .seal-wrap.lift{
+    animation:sealLift 1.05s cubic-bezier(.4,0,.2,1) forwards;
+  }
+  @keyframes sealLift{
+    0%{ transform:translateY(0) rotate(0) scale(1); }
+    40%{ transform:translateY(-18px) rotate(-8deg) scale(1.06); }
+    100%{ transform:translateY(-220px) rotate(10deg) scale(.6); opacity:0; }
+  }
+  .seal-wax{ width:100%; height:100%; }
+
+  /* =========================================================
+     SECTION 1 — INVITATION (marble + gold)
+  ==========================================================*/
+  #invite{
+    background:var(--cream-050);
+    color:var(--ink-on-cream);
+  }
+  #invite .marble{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(closest-side at 8% 15%, rgba(120,110,100,.35), transparent 60%),
+      radial-gradient(closest-side at 3% 55%, rgba(90,82,74,.4), transparent 55%),
+      radial-gradient(closest-side at 12% 85%, rgba(150,140,128,.28), transparent 60%),
+      linear-gradient(100deg, rgba(58,53,50,.5) 0%, rgba(58,53,50,.12) 16%, transparent 30%);
+    mix-blend-mode:multiply;
+    opacity:.9;
+  }
+  #invite svg.veins{ position:absolute; inset:0; width:100%; height:100%; opacity:.55; }
+  #invite svg.corner-branch{
+    position:absolute; top:18px; inset-inline-end:10px;
+    width:min(42vw,220px); height:auto;
+    opacity:.85;
+  }
+  .invite-inner{
+    position:relative; z-index:2;
+    max-width:560px;
+    text-align:center;
+  }
+  .invite-eyebrow{
+    font-family:'Aref Ruqaa', serif;
+    font-size:clamp(1rem,2.6vw,1.3rem);
+    color:var(--gold-500);
+    margin:0 0 4px;
+  }
+  .invite-sub{
+    font-size:.85rem;
+    letter-spacing:.12em;
+    color:var(--marble-ink);
+    opacity:.75;
+    margin:0 0 26px;
+  }
+  .invite-divider{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    margin:0 auto 26px; width:220px;
+  }
+  .invite-divider .line{ flex:1; height:1px; background:linear-gradient(90deg, transparent, var(--gold-500), transparent); }
+  .names{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    line-height:1.05;
+    font-size:clamp(3rem,10vw,5.2rem);
+    color:var(--wine-800);
+    margin:0 0 8px;
+  }
+  .names .amp{ display:block; font-size:.55em; color:var(--gold-500); margin:0.05em 0; }
+  .invite-msg{
+    font-size:clamp(1rem,2.6vw,1.15rem);
+    line-height:1.9;
+    color:var(--ink-on-cream);
+    max-width:420px;
+    margin:22px auto 30px;
+  }
+  .invite-details{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:0;
+    font-family:'Aref Ruqaa', serif;
+    font-size:clamp(.9rem,2.4vw,1.05rem);
+    color:var(--wine-700);
+  }
+  .invite-details span{ padding:0 14px; position:relative; }
+  .invite-details span:not(:last-child)::after{
+    content:'•';
+    position:absolute; inset-inline-end:-2px;
+    color:var(--gold-500);
+  }
+  .invite-note{
+    margin-top:22px;
+    font-size:.8rem;
+    color:var(--marble-ink);
+    opacity:.65;
+  }
+
+  /* =========================================================
+     SECTION 2 — ETIQUETTE / RULES
+  ==========================================================*/
+  #rules{
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(233,214,163,.08), transparent 55%),
+      var(--wine-900);
+  }
+  .rules-title{
+    font-family:'Aref Ruqaa', serif;
+    font-size:clamp(1.6rem,4.5vw,2.3rem);
+    color:var(--gold-300);
+    margin:0 0 6px;
+    text-align:center;
+  }
+  .rules-sub{
+    font-size:.9rem;
+    color:rgba(248,242,231,.6);
+    margin:0 0 40px;
+    text-align:center;
+  }
+  .rules-list{
+    list-style:none; margin:0; padding:0;
+    display:grid; gap:22px;
+    max-width:560px;
+    width:100%;
+  }
+  .rules-list li{
+    display:flex; align-items:flex-start; gap:16px;
+    border-bottom:1px solid rgba(233,214,163,.15);
+    padding-bottom:18px;
+    font-size:1.02rem;
+    line-height:1.8;
+  }
+  .rules-list li:last-child{ border-bottom:none; }
+  .rules-list svg{ flex:none; width:22px; height:22px; margin-top:4px; color:var(--gold-400); }
+  .rules-list b{ color:var(--gold-300); font-weight:700; }
+
+  /* =========================================================
+     SECTION 3 — CUSTOM ARTWORK (monogram wreath)
+  ==========================================================*/
+  #art{
+    background:
+      radial-gradient(ellipse at 50% 50%, var(--wine-800) 0%, var(--wine-950) 78%);
+  }
+  #art .wreath-wrap{ position:relative; width:min(78vw,420px); }
+  #art .wreath-wrap svg{ width:100%; height:auto; }
+  .art-caption{
+    margin-top:26px;
+    font-family:'Aref Ruqaa', serif;
+    color:var(--gold-300);
+    font-size:clamp(1rem,2.6vw,1.25rem);
+    text-align:center;
+  }
+
+  /* =========================================================
+     SECTION 4 — THANK YOU + MUSIC
+  ==========================================================*/
+  #thanks{
+    background:var(--wine-950);
+  }
+  #thanks svg.bg-roses{ position:absolute; inset:0; width:100%; height:100%; opacity:.14; }
+  .thanks-inner{ position:relative; z-index:2; text-align:center; max-width:520px; }
+  .thanks-title{
+    font-family:'Aref Ruqaa', serif;
+    font-size:clamp(2rem,6vw,3rem);
+    color:var(--gold-300);
+    margin:0 0 18px;
+  }
+  .thanks-msg{
+    font-size:1.05rem;
+    line-height:2;
+    color:rgba(248,242,231,.85);
+    margin:0 0 34px;
+  }
+  .music-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:transparent;
+    border:1px solid var(--gold-400);
+    color:var(--gold-300);
+    font-family:'Amiri', serif;
+    font-size:.95rem;
+    padding:12px 26px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:background .3s, color .3s;
+  }
+  .music-btn:hover{ background:var(--gold-400); color:var(--wine-950); }
+  .music-btn svg{ width:18px; height:18px; }
+  .music-note{
+    margin-top:16px;
+    font-size:.75rem;
+    color:rgba(248,242,231,.45);
+  }
+  .signature{
+    margin-top:46px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.4rem;
+    color:var(--gold-400);
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .seal-wrap.lift{ animation:none; opacity:0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="dotnav" id="dotnav">
+  <a href="#cover" data-i="0"></a>
+  <a href="#invite" data-i="1"></a>
+  <a href="#rules" data-i="2"></a>
+  <a href="#art" data-i="3"></a>
+  <a href="#thanks" data-i="4"></a>
+</nav>
+
+<!-- ============ SECTION 0 : COVER ============ -->
+<section id="cover">
+  <svg class="fabric" viewBox="0 0 800 1400" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="roseTile" width="200" height="200" patternUnits="userSpaceOnUse">
+        <rect width="200" height="200" fill="none"/>
+        <g fill="none" stroke="rgba(205,161,88,.16)" stroke-width="1.4">
+          <path d="M100 40c14 0 24 12 24 26 0 16-14 26-24 34-10-8-24-18-24-34 0-14 10-26 24-26z"/>
+          <path d="M100 100c8 10 20 14 32 12M100 100c-8 10-20 14-32 12M100 100v46"/>
+          <ellipse cx="70" cy="150" rx="16" ry="8"/>
+          <ellipse cx="130" cy="150" rx="16" ry="8"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="800" height="1400" fill="var(--wine-900)"/>
+    <rect width="800" height="1400" fill="url(#roseTile)"/>
+    <g stroke="rgba(205,161,88,.28)" stroke-width="1.5" fill="none">
+      <line x1="0" y1="0" x2="400" y2="700"/>
+      <line x1="800" y1="0" x2="400" y2="700"/>
+      <line x1="0" y1="1400" x2="400" y2="700"/>
+      <line x1="800" y1="1400" x2="400" y2="700"/>
+    </g>
+  </svg>
+
+  <div class="seal-wrap" id="sealBtn" role="button" tabindex="0" aria-label="افتح الدعوة">
+    <svg class="seal-wax" viewBox="0 0 200 200">
+      <defs>
+        <radialGradient id="waxGrad" cx="38%" cy="32%" r="75%">
+          <stop offset="0%" stop-color="#fbf6ea"/>
+          <stop offset="55%" stop-color="#efe3c8"/>
+          <stop offset="100%" stop-color="#d9c79f"/>
+        </radialGradient>
+      </defs>
+      <path d="M100 14c8 6 30 4 40 16 10 12 4 30 12 40 8 10 26 12 26 26s-18 16-26 26c-8 10-2 28-12 40-10 12-32 10-40 16-8-6-30-4-40-16-10-12-4-30-12-40-8-10-26-12-26-26s18-16 26-26c8-10 2-28 12-40 10-12 32-10 40-16z" fill="url(#waxGrad)"/>
+      <g transform="translate(100,102)" fill="none" stroke="#a9925f" stroke-width="1.6" opacity=".8">
+        <path d="M0 -34c0 12 0 22 0 34"/>
+        <path d="M0 -10c10 -6 20 -4 26 4M0 -10c-10 -6 -20 -4 -26 4"/>
+        <path d="M0 8c8 -4 16 -2 22 4M0 8c-8 -4 -16 -2 -22 4"/>
+        <ellipse cx="0" cy="-34" rx="10" ry="14"/>
+        <path d="M-10 -30c4 -8 4 -16 -2 -22M10 -30c-4 -8 -4 -16 2 -22"/>
+      </g>
+    </svg>
+  </div>
+
+  <p class="fold-caption">اضغطوا على الختم لفتح الدعوة<span>Ines &amp; Moutez</span></p>
+</section>
+
+<!-- ============ SECTION 1 : INVITATION ============ -->
+<section id="invite">
+  <div class="marble"></div>
+  <svg class="veins" viewBox="0 0 800 900" preserveAspectRatio="none">
+    <g fill="none" stroke="rgba(179,133,74,.5)" stroke-width="1.4">
+      <path d="M0 60C60 90 40 160 110 190S200 260 160 330 260 420 210 480"/>
+      <path d="M0 200C50 220 30 280 90 300S170 350 140 400"/>
+      <path d="M0 30C40 10 70 40 60 80"/>
+    </g>
+  </svg>
+  <svg class="corner-branch" viewBox="0 0 220 220">
+    <g fill="none" stroke="var(--gold-500)" stroke-width="1.3" opacity=".85">
+      <path d="M210 10C170 30 150 60 150 100S170 170 140 210"/>
+      <path d="M150 60c14-6 24-2 30 8M150 60c-16 2-24 12-22 24"/>
+      <path d="M150 100c14-6 26-2 32 8M150 100c-16 2-26 12-24 24"/>
+      <path d="M150 140c12-4 22 0 28 10M150 140c-14 4-22 14-18 26"/>
+      <ellipse cx="184" cy="66" rx="12" ry="7" transform="rotate(30 184 66)"/>
+      <ellipse cx="122" cy="82" rx="12" ry="7" transform="rotate(-20 122 82)"/>
+      <ellipse cx="186" cy="108" rx="12" ry="7" transform="rotate(35 186 108)"/>
+      <ellipse cx="124" cy="122" rx="12" ry="7" transform="rotate(-25 124 122)"/>
+    </g>
+  </svg>
+
+  <div class="invite-inner">
+    <p class="invite-eyebrow">بقلوب عامرة بالحب والسعادة</p>
+    <p class="invite-sub">ندعوكم لحضور حفل زفافنا</p>
+    <div class="invite-divider"><span class="line"></span>❁<span class="line"></span></div>
+    <h1 class="names ltr-name">Ines<span class="amp">&amp;</span>Moutez</h1>
+    <p class="invite-msg">على بركة الله وسنة رسوله ﷺ، يسعدنا أن نشارككم أجمل لحظات حياتنا، فحضوركم يزيدنا فرحاً وبهجة.</p>
+    <div class="invite-details">
+      <span>19 / 09 / 2027</span>
+      <span>تبدأ الساعة الرابعة عصراً</span>
+      <span class="ltr-name" style="font-family:'Aref Ruqaa',serif; direction:rtl;">قاعة تملوكة</span>
+    </div>
+    <p class="invite-note">بانتظار شرفكم</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 : RULES / ETIQUETTE ============ -->
+<section id="rules">
+  <h2 class="rules-title">آداب الحفل</h2>
+  <p class="rules-sub">حتى تكتمل الفرحة بكم، نرجو مراعاة النقاط التالية</p>
+  <ul class="rules-list">
+    <li>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <span><b>الحضور في الوقت المحدد</b> — نرجو الحرص على الوصول قبل بداية الحفل حتى لا تفوتكم أجمل اللحظات.</span>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3h12l-1 4H7L6 3z"/><path d="M7 7l-2 14h14L17 7"/></svg>
+      <span><b>اللباس الأنيق</b> — يُفضّل اختيار إطلالة راقية تليق بأجواء الحفل، مع تجنّب اللون الأبيض المخصص للعروس.</span>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="3"/></svg>
+      <span><b>التصوير</b> — يسعدنا أن توثقوا الذكريات، مع مراعاة خصوصية باقي الضيوف عند نشر الصور.</span>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+      <span><b>الهواتف</b> — نرجو وضعها على الوضع الصامت أثناء لحظات العقد والخطاب حتى تعم الأجواء الهادئة.</span>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.35-9-8.5C1 8 3 5 6 5c2 0 4 1.5 6 4 2-2.5 4-4 6-4 3 0 5 3 3 7.5-2 4.15-9 8.5-9 8.5z"/></svg>
+      <span><b>الأجواء العامة</b> — حضوركم بروح الفرح والاحترام المتبادل هو أجمل هدية نتمناها في هذا اليوم.</span>
+    </li>
+  </ul>
+</section>
+
+<!-- ============ SECTION 3 : CUSTOM ARTWORK ============ -->
+<section id="art">
+  <div class="wreath-wrap">
+    <svg viewBox="0 0 420 420">
+      <defs>
+        <g id="leafUnit">
+          <path d="M0 0c8 -22 26 -34 46 -30c-2 22 -18 36 -46 30z" fill="none" stroke="var(--gold-400)" stroke-width="1.4"/>
+        </g>
+      </defs>
+      <g stroke="var(--gold-400)" stroke-width="1" fill="none" opacity=".7">
+        <circle cx="210" cy="210" r="150"/>
+      </g>
+      <g>
+        <use href="#leafUnit" transform="translate(210,50) rotate(0)"/>
+        <use href="#leafUnit" transform="translate(210,50) rotate(24) translate(0,0)"/>
+        <use href="#leafUnit" transform="translate(348,110) rotate(55)"/>
+        <use href="#leafUnit" transform="translate(370,210) rotate(80)"/>
+        <use href="#leafUnit" transform="translate(348,310) rotate(105)"/>
+        <use href="#leafUnit" transform="translate(210,370) rotate(150)"/>
+        <use href="#leafUnit" transform="translate(72,310) rotate(200)"/>
+        <use href="#leafUnit" transform="translate(50,210) rotate(255)"/>
+        <use href="#leafUnit" transform="translate(72,110) rotate(300)"/>
+      </g>
+      <g fill="none" stroke="var(--gold-500)" stroke-width="1.2" opacity=".85">
+        <path d="M210 92c-14 10 -20 24 -14 40M210 92c14 10 20 24 14 40"/>
+        <ellipse cx="210" cy="82" rx="11" ry="15"/>
+        <path d="M210 328c-14 -10 -20 -24 -14 -40M210 328c14 -10 20 -24 14 -40"/>
+        <ellipse cx="210" cy="338" rx="11" ry="15"/>
+      </g>
+      <text x="210" y="196" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="46" fill="var(--gold-300)">Ines</text>
+      <text x="210" y="228" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="24" fill="var(--gold-400)">&amp;</text>
+      <text x="210" y="264" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="46" fill="var(--gold-300)">Moutez</text>
+    </svg>
+  </div>
+  <p class="art-caption">19 . 09 . 2027</p>
+</section>
+
+<!-- ============ SECTION 4 : THANK YOU + MUSIC ============ -->
+<section id="thanks">
+  <svg class="bg-roses" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="roseTile2" width="180" height="180" patternUnits="userSpaceOnUse">
+        <g fill="none" stroke="rgba(205,161,88,.4)" stroke-width="1.2">
+          <path d="M90 30c12 0 20 10 20 22 0 14-12 22-20 30-8-8-20-16-20-30 0-12 8-22 20-22z"/>
+          <ellipse cx="65" cy="120" rx="14" ry="7"/>
+          <ellipse cx="115" cy="120" rx="14" ry="7"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect width="800" height="800" fill="url(#roseTile2)"/>
+  </svg>
+  <div class="thanks-inner">
+    <h2 class="thanks-title">شكراً لتواجدكم</h2>
+    <p class="thanks-msg">حضوركم كان أجمل هدية في يومنا، شكراً من القلب على كل كلمة دعاء ولحظة فرح شاركتمونا إياها. نتمنى أن تبقى هذه الذكرى في قلوبكم كما ستبقى في قلوبنا.</p>
+    <button class="music-btn" id="musicBtn">
+      <svg id="musicIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      <span id="musicLabel">تشغيل موسيقى هادئة</span>
+    </button>
+    <p class="music-note">لحن لطيف يرافق هذه اللحظة</p>
+    <p class="signature">Ines &amp; Moutez</p>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+<script>
+  // ---- seal open interaction ----
+  const seal = document.getElementById('sealBtn');
+  function openInvite(){
+    if(seal.classList.contains('lift')) return;
+    seal.classList.add('lift');
+    setTimeout(()=>{ document.getElementById('invite').scrollIntoView({behavior:'smooth'}); }, 550);
+  }
+  seal.addEventListener('click', openInvite);
+  seal.addEventListener('keypress', (e)=>{ if(e.key==='Enter' || e.key===' ') openInvite(); });
+
+  // ---- dot nav ----
+  const dotnav = document.getElementById('dotnav');
+  const dots = [...dotnav.querySelectorAll('a')];
+  const sections = ['cover','invite','rules','art','thanks'].map(id=>document.getElementById(id));
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        dotnav.classList.add('show');
+        const idx = sections.indexOf(en.target);
+        dots.forEach(d=>d.classList.remove('active'));
+        if(dots[idx]) dots[idx].classList.add('active');
+      }
+    });
+  }, {threshold:.6});
+  sections.forEach(s=>io.observe(s));
+
+  // ---- ambient music (Tone.js, generated — no external audio files) ----
+  let playing = false;
+  let synth, loop, reverb;
+  const btn = document.getElementById('musicBtn');
+  const label = document.getElementById('musicLabel');
+
+  async function startMusic(){
+    try{
+      await Tone.start();
+      reverb = new Tone.Reverb({decay:6, wet:.45}).toDestination();
+      synth = new Tone.PolySynth(Tone.Synth, {
+        oscillator:{type:'sine'},
+        envelope:{attack:1.2, decay:1, sustain:.4, release:3}
+      }).connect(reverb);
+      synth.volume.value = -14;
+      const notes = ['C4','E4','G4','B4','D5','G4','E4','B4','A3','C4','E4','G4'];
+      let i = 0;
+      loop = new Tone.Loop((time)=>{
+        synth.triggerAttackRelease(notes[i % notes.length], '2n', time);
+        i++;
+      }, '2n').start(0);
+      Tone.Transport.bpm.value = 46;
+      Tone.Transport.start();
+      playing = true;
+      label.textContent = 'إيقاف الموسيقى';
+    }catch(err){
+      console.error('Audio error:', err);
+    }
+  }
+  function stopMusic(){
+    if(loop) loop.stop();
+    Tone.Transport.stop();
+    playing = false;
+    label.textContent = 'تشغيل موسيقى هادئة';
+  }
+  btn.addEventListener('click', ()=>{
+    if(!playing) startMusic(); else stopMusic();
+  });
+</script>
+</body>
+</html>
